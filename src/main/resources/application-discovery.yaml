@@ -6,4 +6,3 @@ qotm:
   ribbon:
     NIWSServerListClassName: io.fabric8.kubeflix.ribbon.KubernetesServerList
     KubernetesNamespace: ${K8S_NAMESPACE:default}
-    PortName: tcp5000
