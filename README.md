@@ -1,0 +1,49 @@
+# telepresence-k8s
+Sample project to show integration between telepresence and the Java Kubernetes Client from fabric8
+
+# Requirements
+You need a running K8s cluster and install [telepresence](https://www.telepresence.io/) locally
+
+# Existing issue
+
+### Setting up Quote Of the Moment Service
+`kubectl run qotm --image=datawire/qotm:1.3 --port=5000 --expose`
+
+### Basic profile
+
+Using the basic profile, service disovery using K8S API is disable; The Ribbon client use the service host name directly:
+
+```yaml
+qotm:
+    ribbon:
+        listOfServers: qotm:5000
+```
+
+You can run the service with telepresence by running
+
+`./telepresence-basic.sh`
+
+Once sprince has started, you can make a GET request locally:
+
+`curl localhost:8080/rest/quote/cesar`
+
+```
+A quote for cesar: Nihilism gambles with lives, happiness, and even destiny itself!% 
+```
+### Discovery profile
+
+Using the discovery profile, Ribbon will use `io.fabric8.kubeflix.ribbon.KubernetesServerList` to discover the list of server:
+
+```yaml
+qotm:
+  ribbon:
+    NIWSServerListClassName: io.fabric8.kubeflix.ribbon.KubernetesServerList
+    KubernetesNamespace: ${K8S_NAMESPACE:default}
+```
+
+
+You can run the service with telepresence by running
+
+`./telepresence-discovery.sh`
+
+However the Kubernetes client is not able to access certificate files to talk to the K8s Master API and throws several exceptions
