@@ -1,0 +1,7 @@
+kubernetes.auth.tryKubeConfig: false
+spring.cloud.kubernetes.discovery.enabled: false
+spring.cloud.kubernetes.ribbon.enabled: false
+
+qotm:
+    ribbon:
+        listOfServers: qotm:5000

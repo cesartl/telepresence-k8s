@@ -1,0 +1,9 @@
+kubernetes.auth.tryKubeConfig: true
+spring.cloud.kubernetes.discovery.enabled: true
+spring.cloud.kubernetes.ribbon.enabled: true
+
+qotm:
+  ribbon:
+    NIWSServerListClassName: io.fabric8.kubeflix.ribbon.KubernetesServerList
+    KubernetesNamespace: ${K8S_NAMESPACE:default}
+    PortName: tcp5000
