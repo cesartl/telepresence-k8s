@@ -4,7 +4,7 @@ Sample project to show integration between telepresence and the Java Kubernetes 
 # Requirements
 You need a running K8s cluster and install [telepresence](https://www.telepresence.io/) locally
 
-# Existing issue
+# Demo
 
 ### Setting up Quote Of the Moment Service
 `kubectl run qotm --image=datawire/qotm:1.3 --port=5000 --expose`
@@ -46,4 +46,4 @@ You can run the service with telepresence by running
 
 `./telepresence-discovery.sh`
 
-However the Kubernetes client is not able to access certificate files to talk to the K8s Master API and throws several exceptions
+This command will need to use the `--mount` command available from Telepresence `0.85` to access the k8s service account
