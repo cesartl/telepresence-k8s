@@ -46,4 +46,4 @@ You can run the service with telepresence by running
 
 `./telepresence-discovery.sh`
 
-This command will need to use the `--mount` command available from Telepresence `0.85` to access the k8s service account
+This command uses the `--mount` command available from Telepresence `0.85` to access the k8s service account
